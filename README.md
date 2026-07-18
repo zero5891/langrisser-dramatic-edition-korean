@@ -1,4 +1,4 @@
-# 랑그릿사 드라마틱 에디션 한글패치 v0.12.24
+# 랑그릿사 드라마틱 에디션 한글패치 v0.12.25
 
 세가 새턴판 `LANGRISSER Dramatic Edition`용 비공식 한국어 번역 패치입니다.
 게임 데이터는 포함하지 않으며, 사용자가 직접 준비한 검증된 정품 MDF에만 적용됩니다.
@@ -17,10 +17,10 @@
 python apply_patch.py "D:\경로\langDramaticEdition.mdf"
 ```
 
-완성 파일은 원본 옆의 `langDramaticEdition_ko_v0.12.24.mdf`입니다. 원본 `MDS`를 함께 두고 MDF를 불러오거나, 다음 명령으로 음성 호환 BIN/CUE를 만듭니다.
+완성 파일은 원본 옆의 `langDramaticEdition_ko_v0.12.25.mdf`입니다. 원본 `MDS`를 함께 두고 MDF를 불러오거나, 다음 명령으로 음성 호환 BIN/CUE를 만듭니다.
 
 ```powershell
-python make_cue_bin.py "D:\경로\langDramaticEdition_ko_v0.12.24.mdf"
+python make_cue_bin.py "D:\경로\langDramaticEdition_ko_v0.12.25.mdf"
 ```
 
 생성된 일반 CUE가 권장 MODE2/XA 버전입니다. `_mode1.cue`는 일부 환경용 대체 파일입니다.
