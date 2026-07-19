@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply the Korean v0.12.25 patch to the verified retail MDF."""
+"""Apply the Korean v0.13.7 patch to the verified retail MDF."""
 
 from __future__ import annotations
 
@@ -12,9 +12,9 @@ import sys
 from pathlib import Path
 
 
-PATCH_NAME = "langrisser_de_ko_v0.12.25.ldp"
+PATCH_NAME = "langrisser_de_ko_v0.13.7.ldp"
 SOURCE_SHA256 = "1a9d479d3238bd1932fe2faee0c2b146c6333127a5b39d83e7d3d81a067505c1"
-TARGET_SHA256 = "407b0a858527a34de80d96e6befdfd9e751c37ddb9d74d76008147b3665f1928"
+TARGET_SHA256 = "0c13f674dba6207df896bd587b316b24f202399427da35f4df8e4c19a593c4d1"
 EXPECTED_SIZE = 682_656_624
 MAGIC = b"LDP1"
 END_OFFSET = 0xFFFFFFFFFFFFFFFF
@@ -85,10 +85,10 @@ def apply(source: Path, output: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path, help="verified retail MDF")
-    parser.add_argument("output", type=Path, nargs="?", help="output Korean v0.12.25 MDF")
+    parser.add_argument("output", type=Path, nargs="?", help="output Korean v0.13.7 MDF")
     args = parser.parse_args()
     output = args.output or args.source.with_name(
-        "langDramaticEdition_ko_v0.12.25.mdf"
+        "langDramaticEdition_ko_v0.13.7.mdf"
     )
     try:
         apply(args.source, output)
