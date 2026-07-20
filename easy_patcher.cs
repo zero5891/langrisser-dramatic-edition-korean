@@ -1,4 +1,4 @@
-// Langrisser Dramatic Edition Korean easy patcher v0.13.11
+// Langrisser Dramatic Edition Korean easy patcher v0.13.12
 //
 // This file intentionally targets the conservative .NET Framework 4.x C#
 // compiler included with Windows.  It has no third-party dependencies.
@@ -19,12 +19,12 @@ namespace LangrisserDramaticEasyPatcher
 {
     internal static class PatchConstants
     {
-        internal const string Version = "v0.13.11";
-        internal const string PatchFileName = "langrisser_de_ko_v0.13.11.ldp";
-        internal const string EmbeddedPatchName = "langrisser_de_ko_v0.13.11.ldp";
+        internal const string Version = "v0.13.12";
+        internal const string PatchFileName = "langrisser_de_ko_v0.13.12.ldp";
+        internal const string EmbeddedPatchName = "langrisser_de_ko_v0.13.12.ldp";
         internal const string PatchSha256 =
-            "231a8e47c03d61aa314946385648748a816d57121e01f061c358c176fa8867be";
-        internal const string OutputBaseName = "Langrisser_Dramatic_Edition_Korean_v0.13.11";
+            "a56fdf4a1df0fd02d714cb283b561cadc5485f1a950366c99ac639bef1893839";
+        internal const string OutputBaseName = "Langrisser_Dramatic_Edition_Korean_v0.13.12";
         internal const string OutputBinName = OutputBaseName + ".bin";
         internal const string OutputCueName = OutputBaseName + ".cue";
         internal const string ResultFileName = "easy-patcher-result.json";
@@ -32,9 +32,9 @@ namespace LangrisserDramaticEasyPatcher
         internal const string SourceSha256 =
             "1a9d479d3238bd1932fe2faee0c2b146c6333127a5b39d83e7d3d81a067505c1";
         internal const string PatchedMdfSha256 =
-            "154860494dacb11ee9b66cf6f6264678a060bcc8450965afb033abecc25d4a56";
+            "05e306a882cd44184ca9dff3f14577a14f6fd138cc90335a144d8bec6d619ab1";
         internal const string OutputBinSha256 =
-            "326a7c76e90cd7f747de53c8528f3e5d386e8a59f0d9d033dec3273b91b80003";
+            "6d731532d98bdbbf3fbb0144d737dd00a1aa48e0dc88ee38b731544c81e927de";
         internal const string Mode1GapSha256 =
             "ab2480bf935e1bd21f6217aa7f689d1017ff9bee87a85c709f5457185c6ed1d8";
         internal const string Mode2GapSha256 =
@@ -49,8 +49,8 @@ namespace LangrisserDramaticEasyPatcher
         internal const int Track3SourceSector = 235445;
         internal const int Track2FileSector = 167225;
         internal const int Track3FileSector = 235745;
-        internal const int ExpectedRecordCount = 70124;
-        internal const long ExpectedReplacementBytes = 6669736L;
+        internal const int ExpectedRecordCount = 70132;
+        internal const long ExpectedReplacementBytes = 6669733L;
         internal const long ExpectedSourceSize = 682656624L;
         internal const long ExpectedOutputSize = 656591376L;
         internal const long MinimumFreeBytes = 800L * 1024L * 1024L;
@@ -422,7 +422,7 @@ namespace LangrisserDramaticEasyPatcher
                 {
                     throw new EasyPatchException(
                         4,
-                        "이 프로그램용 v0.13.11 패치 파일이 아닙니다.");
+                        "이 프로그램용 v0.13.12 패치 파일이 아닙니다.");
                 }
                 if (expectedRecords < 0 || expectedRecords > 10000000L
                     || expectedReplacementBytes < 0
@@ -1590,7 +1590,7 @@ namespace LangrisserDramaticEasyPatcher
             string parent = Path.GetDirectoryName(resolved);
             outputBox.Text = Path.Combine(
                 parent,
-                "Langrisser_Dramatic_Korean_v0.13.11");
+                "Langrisser_Dramatic_Korean_v0.13.12");
             statusLabel.Text = String.Equals(
                 selectedPath, resolved, StringComparison.OrdinalIgnoreCase)
                 ? "원본을 선택했습니다. '한글판 만들기'를 눌러 주세요."

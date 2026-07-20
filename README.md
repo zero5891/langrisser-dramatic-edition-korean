@@ -1,4 +1,4 @@
-# 랑그릿사 드라마틱 에디션 한글패치 v0.13.11
+# 랑그릿사 드라마틱 에디션 한글패치 v0.13.12
 
 세가 새턴판 `LANGRISSER Dramatic Edition`용 비공식 한국어 번역 패치입니다.
 게임 원본은 포함하지 않으며, 사용자가 정품에서 직접 만든 일본판 MDF에만 적용됩니다.
@@ -8,12 +8,12 @@
 Python 설치나 명령어 입력은 필요 없습니다.
 
 1. 받은 ZIP을 우클릭하고 **모두 압축 풀기**를 누릅니다.
-2. `랑그릿사_DE_한글패치_v0.13.11.exe`를 실행합니다.
+2. `랑그릿사_DE_한글패치_v0.13.12.exe`를 실행합니다.
 3. 일본판 원본 `.mdf`를 고른 뒤 **한글판 만들기**를 누릅니다.
 
 완료되면 결과 폴더가 자동으로 열립니다. Ymir에서 다음 파일 하나만 여세요.
 
-`Langrisser_Dramatic_Edition_Korean_v0.13.11.cue`
+`Langrisser_Dramatic_Edition_Korean_v0.13.12.cue`
 
 원본 MDF를 EXE 위로 끌어다 놓아도 됩니다. 원본 파일은 수정하지 않습니다.
 
@@ -37,8 +37,10 @@ Python 설치나 명령어 입력은 필요 없습니다.
 - **예전 글꼴이 보입니다.** Ymir를 완전히 종료하고 다시 실행한 뒤, 세이브스테이트 대신 게임 내부 세이브를 불러오세요.
 - Windows가 알 수 없는 게시자 경고를 표시하면 GitHub 릴리스의 `SHA256SUMS.txt`와 EXE 해시가 같은지 먼저 확인하세요.
 
-## v0.13.11 주요 내용
+## v0.13.12 주요 내용
 
+- 랑그릿사 I·II 고정 메뉴 한글을 검은색 본문·흰색 테두리에서 **흰색 본문·투명 테두리** Neo둥근모로 변경하여 가독성 개선
+- 랑그릿사 I·II 양쪽 명령 메뉴의 `소환` 글꼴을 다른 명령과 동일하게 통일
 - 랑그릿사 I 본편 대사와 주요 메뉴·전투 UI 한국어화
 - 큰 한글 글꼴을 Neo둥근모 기반 16×16 비트맵으로 교체
 - 작은 한글 글꼴을 갈무리7 기반 8×8 비트맵으로 교체
@@ -56,7 +58,7 @@ Python 설치나 명령어 입력은 필요 없습니다.
 
 ```powershell
 python apply_patch.py "D:\경로\langDramaticEdition.mdf"
-python make_cue_bin.py "D:\경로\langDramaticEdition_ko_v0.13.11.mdf"
+python make_cue_bin.py "D:\경로\langDramaticEdition_ko_v0.13.12.mdf"
 ```
 
 일반 사용자는 이 방법을 사용할 필요가 없습니다.

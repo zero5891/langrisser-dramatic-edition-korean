@@ -1,11 +1,11 @@
-랑그릿사 드라마틱 에디션 한글패치 v0.13.11
+랑그릿사 드라마틱 에디션 한글패치 v0.13.12
 
 1. ZIP 파일을 먼저 모두 압축 풉니다.
-2. 랑그릿사_DE_한글패치_v0.13.11.exe를 실행합니다.
+2. 랑그릿사_DE_한글패치_v0.13.12.exe를 실행합니다.
 3. 일본판 원본 MDF를 고르고 [한글판 만들기]를 누릅니다.
 
 완료되면 자동으로 열린 폴더에서
-Langrisser_Dramatic_Edition_Korean_v0.13.11.cue
+Langrisser_Dramatic_Edition_Korean_v0.13.12.cue
 파일을 Ymir로 여세요.
 
 끝입니다. Python 설치나 명령어 입력은 필요 없습니다.
