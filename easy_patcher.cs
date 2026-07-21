@@ -1,4 +1,4 @@
-// Langrisser Dramatic Edition Korean easy patcher v0.13.13
+// Langrisser Dramatic Edition Korean easy patcher v0.13.17
 //
 // This file intentionally targets the conservative .NET Framework 4.x C#
 // compiler included with Windows.  It has no third-party dependencies.
@@ -19,12 +19,12 @@ namespace LangrisserDramaticEasyPatcher
 {
     internal static class PatchConstants
     {
-        internal const string Version = "v0.13.13";
-        internal const string PatchFileName = "langrisser_de_ko_v0.13.13.ldp";
-        internal const string EmbeddedPatchName = "langrisser_de_ko_v0.13.13.ldp";
+        internal const string Version = "v0.13.17";
+        internal const string PatchFileName = "langrisser_de_ko_v0.13.17.ldp";
+        internal const string EmbeddedPatchName = "langrisser_de_ko_v0.13.17.ldp";
         internal const string PatchSha256 =
-            "db15e2790cf6fbe940f48dc0bc910e56e93067d771823900005eef3994ba6abc";
-        internal const string OutputBaseName = "Langrisser_Dramatic_Edition_Korean_v0.13.13";
+            "177345cbb1daa535b304dd30d5bfa1f771df84b6c28f5b7394e913feae5e8e71";
+        internal const string OutputBaseName = "Langrisser_Dramatic_Edition_Korean_v0.13.17";
         internal const string OutputBinName = OutputBaseName + ".bin";
         internal const string OutputCueName = OutputBaseName + ".cue";
         internal const string ResultFileName = "easy-patcher-result.json";
@@ -32,9 +32,9 @@ namespace LangrisserDramaticEasyPatcher
         internal const string SourceSha256 =
             "1a9d479d3238bd1932fe2faee0c2b146c6333127a5b39d83e7d3d81a067505c1";
         internal const string PatchedMdfSha256 =
-            "9b7c2919a1587ea755eab251ee22422cae648dd247bef5c55b1628353669db93";
+            "af158cb060b045b0342441e7632f09a67522c6b506a583c10b795b9767353c60";
         internal const string OutputBinSha256 =
-            "8b01e81b40a0b17ec9defc8c032db4f430d8c10e5d4573acb51a27e0d943769f";
+            "2d74af6cb105ee7a52dbc7543abf8e3a2e5696e69117dd65d0608461a7b755d7";
         internal const string Mode1GapSha256 =
             "ab2480bf935e1bd21f6217aa7f689d1017ff9bee87a85c709f5457185c6ed1d8";
         internal const string Mode2GapSha256 =
@@ -49,8 +49,8 @@ namespace LangrisserDramaticEasyPatcher
         internal const int Track3SourceSector = 235445;
         internal const int Track2FileSector = 167225;
         internal const int Track3FileSector = 235745;
-        internal const int ExpectedRecordCount = 70470;
-        internal const long ExpectedReplacementBytes = 6669110L;
+        internal const int ExpectedRecordCount = 70613;
+        internal const long ExpectedReplacementBytes = 6673154L;
         internal const long ExpectedSourceSize = 682656624L;
         internal const long ExpectedOutputSize = 656591376L;
         internal const long MinimumFreeBytes = 800L * 1024L * 1024L;
@@ -422,7 +422,7 @@ namespace LangrisserDramaticEasyPatcher
                 {
                     throw new EasyPatchException(
                         4,
-                        "이 프로그램용 v0.13.13 패치 파일이 아닙니다.");
+                        "이 프로그램용 v0.13.17 패치 파일이 아닙니다.");
                 }
                 if (expectedRecords < 0 || expectedRecords > 10000000L
                     || expectedReplacementBytes < 0
@@ -1590,7 +1590,7 @@ namespace LangrisserDramaticEasyPatcher
             string parent = Path.GetDirectoryName(resolved);
             outputBox.Text = Path.Combine(
                 parent,
-                "Langrisser_Dramatic_Korean_v0.13.13");
+                "Langrisser_Dramatic_Korean_v0.13.17");
             statusLabel.Text = String.Equals(
                 selectedPath, resolved, StringComparison.OrdinalIgnoreCase)
                 ? "원본을 선택했습니다. '한글판 만들기'를 눌러 주세요."
@@ -1782,7 +1782,8 @@ namespace LangrisserDramaticEasyPatcher
                         MessageBox.Show(
                             this,
                             "한글판 만들기가 끝났습니다!\r\n\r\n"
-                            + "Ymir에서는 다음 CUE 파일을 열어 주세요.\r\n"
+                            + "RetroArch에서 Beetle Saturn 코어를 선택한 뒤\r\n"
+                            + "다음 CUE 파일을 열어 주세요.\r\n"
                             + result.OutputCuePath,
                             "완료",
                             MessageBoxButtons.OK,

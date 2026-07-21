@@ -1,0 +1,26 @@
+# Original and patched disc images
+*.mdf
+*.mds
+*.bin
+*.cue
+*.iso
+*.img
+*.ccd
+*.sub
+
+# Release binaries belong in GitHub Release assets, not Git history
+*.ldp
+*.exe
+*.zip
+
+# Local emulator and build state
+*.state
+*.state[0-9]*
+*.srm
+*.smpc
+*.bcr
+__pycache__/
+*.pyc
+*-roundtrip/
+*-easy-release-package/
+release-evidence-*/
