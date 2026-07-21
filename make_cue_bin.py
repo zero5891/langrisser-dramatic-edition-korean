@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -39,7 +40,7 @@ TRACK3_FILE_SECTOR = 235_745
 
 EXPECTED_MDF_SIZE = MDF_SECTOR_SIZE * SOURCE_SECTORS
 EXPECTED_PATCHED_SHA256 = (
-    "05e306a882cd44184ca9dff3f14577a14f6fd138cc90335a144d8bec6d619ab1"
+    "9b7c2919a1587ea755eab251ee22422cae648dd247bef5c55b1628353669db93"
 )
 EXPECTED_MODE1_GAP_SHA256 = (
     "ab2480bf935e1bd21f6217aa7f689d1017ff9bee87a85c709f5457185c6ed1d8"
@@ -48,7 +49,7 @@ EXPECTED_MODE2_GAP_SHA256 = (
     "d70194a7c37bd7044df7a83a42e6bde9e4e1bd89e5484112b74fe6262a43034c"
 )
 EXPECTED_OUTPUT_SHA256 = (
-    "6d731532d98bdbbf3fbb0144d737dd00a1aa48e0dc88ee38b731544c81e927de"
+    "8b01e81b40a0b17ec9defc8c032db4f430d8c10e5d4573acb51a27e0d943769f"
 )
 CHUNK_SIZE = 4 * 1024 * 1024
 SYNC = bytes.fromhex("00ffffffffffffffffffff00")
@@ -181,7 +182,7 @@ def convert(
     ]
     if unresolved:
         raise RuntimeError(
-            "The v0.13.12 package MDF SHA-256 value is unresolved: "
+            "The v0.13.13 package MDF SHA-256 value is unresolved: "
             + ", ".join(unresolved)
         )
     if not source.is_file():
@@ -204,18 +205,29 @@ def convert(
     actual_hash = sha256(source)
     if actual_hash.lower() != EXPECTED_PATCHED_SHA256:
         raise ValueError(
-            "This is not the verified v0.13.12 patched MDF.\n"
+            "This is not the verified v0.13.13 patched MDF.\n"
             f"Expected: {EXPECTED_PATCHED_SHA256}\nActual:   {actual_hash}"
         )
 
     output_bin.parent.mkdir(parents=True, exist_ok=True)
+    partials: list[Path] = []
+    for final_path in (output_bin, output_cue, output_mode1_cue):
+        with tempfile.NamedTemporaryFile(
+            prefix=f".{final_path.name}.",
+            suffix=".partial",
+            dir=final_path.parent,
+            delete=False,
+        ) as temporary:
+            partials.append(Path(temporary.name))
+    partial_bin, partial_cue, partial_mode1_cue = partials
     mode1_gap_hash = hashlib.sha256()
     mode2_gap_hash = hashlib.sha256()
     output_sector = 0
+    published: list[Path] = []
 
     print("Building physically aligned BIN...")
     try:
-        with source.open("rb") as src, output_bin.open("xb") as dst:
+        with source.open("rb") as src, partial_bin.open("wb") as dst:
             for source_sector in range(SOURCE_SECTORS):
                 if source_sector == TRACK2_SOURCE_SECTOR:
                     if output_sector != TRACK2_SOURCE_SECTOR:
@@ -257,41 +269,44 @@ def convert(
         if mode2_gap_hash.hexdigest() != EXPECTED_MODE2_GAP_SHA256:
             raise AssertionError("Generated MODE2 pregap failed its reference hash.")
 
-        output_cue.write_text(
+        partial_cue.write_text(
             cue_text(output_bin.name, track2_mode="MODE2/2352"),
             encoding="ascii",
             newline="\n",
         )
-        output_mode1_cue.write_text(
+        partial_mode1_cue.write_text(
             cue_text(output_bin.name, track2_mode="MODE1/2352"),
             encoding="ascii",
             newline="\n",
         )
+
+        expected_size = OUTPUT_SECTORS * BIN_SECTOR_SIZE
+        if partial_bin.stat().st_size != expected_size:
+            raise ValueError("Converted BIN size verification failed.")
+
+        output_hash = sha256(partial_bin)
+        if (
+            not EXPECTED_OUTPUT_SHA256.startswith("__")
+            and output_hash != EXPECTED_OUTPUT_SHA256
+        ):
+            raise ValueError(
+                "Converted BIN SHA-256 verification failed.\n"
+                f"Expected: {EXPECTED_OUTPUT_SHA256}\nActual:   {output_hash}"
+            )
+
+        for partial, final in (
+            (partial_cue, output_cue),
+            (partial_mode1_cue, output_mode1_cue),
+            (partial_bin, output_bin),
+        ):
+            partial.rename(final)
+            published.append(final)
     except Exception:
-        output_bin.unlink(missing_ok=True)
-        output_cue.unlink(missing_ok=True)
-        output_mode1_cue.unlink(missing_ok=True)
+        for partial in partials:
+            partial.unlink(missing_ok=True)
+        for final in reversed(published):
+            final.unlink(missing_ok=True)
         raise
-
-    expected_size = OUTPUT_SECTORS * BIN_SECTOR_SIZE
-    if output_bin.stat().st_size != expected_size:
-        output_bin.unlink(missing_ok=True)
-        output_cue.unlink(missing_ok=True)
-        output_mode1_cue.unlink(missing_ok=True)
-        raise ValueError("Converted BIN size verification failed.")
-
-    output_hash = sha256(output_bin)
-    if (
-        not EXPECTED_OUTPUT_SHA256.startswith("__")
-        and output_hash != EXPECTED_OUTPUT_SHA256
-    ):
-        output_bin.unlink(missing_ok=True)
-        output_cue.unlink(missing_ok=True)
-        output_mode1_cue.unlink(missing_ok=True)
-        raise ValueError(
-            "Converted BIN SHA-256 verification failed.\n"
-            f"Expected: {EXPECTED_OUTPUT_SHA256}\nActual:   {output_hash}"
-        )
 
     print(f"Done: {output_bin}")
     print(f"CUE (recommended MODE2/XA Track 2): {output_cue}")
@@ -303,7 +318,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Convert the patched MDF to a voice-compatible physical BIN/CUE."
     )
-    parser.add_argument("source", type=Path, help="v0.13.12 patched MDF")
+    parser.add_argument("source", type=Path, help="v0.13.13 patched MDF")
     parser.add_argument("output_bin", type=Path, nargs="?", help="output BIN path")
     args = parser.parse_args()
     output_bin = args.output_bin or args.source.with_suffix(".bin")
