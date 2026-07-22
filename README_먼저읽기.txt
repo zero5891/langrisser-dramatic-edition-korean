@@ -1,11 +1,11 @@
-랑그릿사 드라마틱 에디션 한글패치 v0.13.17
+랑그릿사 드라마틱 에디션 한글패치 v0.13.21
 
 1. ZIP 파일을 먼저 모두 압축 풉니다.
-2. 랑그릿사_DE_한글패치_v0.13.17.exe를 실행합니다.
+2. 랑그릿사_DE_한글패치_v0.13.21.exe를 실행합니다.
 3. 일본판 원본 MDF를 고르고 [한글판 만들기]를 누릅니다.
 
 완료되면 자동으로 열린 폴더에서
-Langrisser_Dramatic_Edition_Korean_v0.13.17.cue
+Langrisser_Dramatic_Edition_Korean_v0.13.21.cue
 파일을 에뮬레이터로 여세요.
 
 끝입니다. Python 설치나 명령어 입력은 필요 없습니다.
@@ -15,7 +15,7 @@ Langrisser_Dramatic_Edition_Korean_v0.13.17.cue
 - ZIP 안에서 바로 실행하지 말고 반드시 압축을 푸세요.
 - 음성·배경음을 들으려면 BIN이나 MDF가 아니라 CUE를 여세요.
 - 예전 글꼴이 보이면 에뮬레이터를 완전히 종료한 뒤 게임 내부 세이브를 불러오세요.
-- v0.13.17의 공식 화면 검증 환경은 RetroArch 1.22.2 / Beetle Saturn 코어입니다.
+- v0.13.21의 공식 화면 검증 환경은 RetroArch 1.22.2 / Beetle Saturn 코어입니다.
 - 앞으로 공식 화면 검수는 RetroArch의 Beetle Saturn 코어에서만 수행합니다.
 - Ymir·다른 에뮬레이터·실기는 공식 검증 대상이 아니며 호환성을 보장하지 않습니다.
 - 모든 상점 분기와 게임 전체 완주는 최종 검증 범위가 아닙니다.
