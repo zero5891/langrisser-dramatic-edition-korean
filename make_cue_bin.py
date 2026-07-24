@@ -182,7 +182,7 @@ def convert(
     ]
     if unresolved:
         raise RuntimeError(
-            "The v0.13.21 package MDF SHA-256 value is unresolved: "
+            "The v1.0 package MDF SHA-256 value is unresolved: "
             + ", ".join(unresolved)
         )
     if not source.is_file():
@@ -205,7 +205,7 @@ def convert(
     actual_hash = sha256(source)
     if actual_hash.lower() != EXPECTED_PATCHED_SHA256:
         raise ValueError(
-            "This is not the verified v0.13.21 patched MDF.\n"
+            "This is not the verified v1.0 patched MDF.\n"
             f"Expected: {EXPECTED_PATCHED_SHA256}\nActual:   {actual_hash}"
         )
 
@@ -318,7 +318,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Convert the patched MDF to a voice-compatible physical BIN/CUE."
     )
-    parser.add_argument("source", type=Path, help="v0.13.21 patched MDF")
+    parser.add_argument("source", type=Path, help="v1.0 patched MDF")
     parser.add_argument("output_bin", type=Path, nargs="?", help="output BIN path")
     args = parser.parse_args()
     output_bin = args.output_bin or args.source.with_suffix(".bin")

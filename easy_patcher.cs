@@ -1,4 +1,4 @@
-// Langrisser Dramatic Edition Korean easy patcher v0.13.21
+// Langrisser Dramatic Edition Korean easy patcher v1.0
 //
 // This file intentionally targets the conservative .NET Framework 4.x C#
 // compiler included with Windows.  It has no third-party dependencies.
@@ -19,12 +19,12 @@ namespace LangrisserDramaticEasyPatcher
 {
     internal static class PatchConstants
     {
-        internal const string Version = "v0.13.21";
-        internal const string PatchFileName = "langrisser_de_ko_v0.13.21.ldp";
-        internal const string EmbeddedPatchName = "langrisser_de_ko_v0.13.21.ldp";
+        internal const string Version = "v1.0";
+        internal const string PatchFileName = "langrisser_de_ko_v1.0.ldp";
+        internal const string EmbeddedPatchName = "langrisser_de_ko_v1.0.ldp";
         internal const string PatchSha256 =
             "412ddc6153059bccf2b9fa92e445b0143fbdbca2ae5aa41453843c8b1eafdafe";
-        internal const string OutputBaseName = "Langrisser_Dramatic_Edition_Korean_v0.13.21";
+        internal const string OutputBaseName = "Langrisser_Dramatic_Edition_Korean_v1.0";
         internal const string OutputBinName = OutputBaseName + ".bin";
         internal const string OutputCueName = OutputBaseName + ".cue";
         internal const string ResultFileName = "easy-patcher-result.json";
@@ -422,7 +422,7 @@ namespace LangrisserDramaticEasyPatcher
                 {
                     throw new EasyPatchException(
                         4,
-                        "이 프로그램용 v0.13.21 패치 파일이 아닙니다.");
+                        "이 프로그램용 v1.0 패치 파일이 아닙니다.");
                 }
                 if (expectedRecords < 0 || expectedRecords > 10000000L
                     || expectedReplacementBytes < 0
@@ -1590,7 +1590,7 @@ namespace LangrisserDramaticEasyPatcher
             string parent = Path.GetDirectoryName(resolved);
             outputBox.Text = Path.Combine(
                 parent,
-                "Langrisser_Dramatic_Korean_v0.13.21");
+                "Langrisser_Dramatic_Korean_v1.0");
             statusLabel.Text = String.Equals(
                 selectedPath, resolved, StringComparison.OrdinalIgnoreCase)
                 ? "원본을 선택했습니다. '한글판 만들기'를 눌러 주세요."

@@ -1,4 +1,4 @@
-# 랑그릿사 드라마틱 에디션 한글패치 v0.13.21
+# 랑그릿사 드라마틱 에디션 한글패치 v1.0
 
 세가 새턴판 `LANGRISSER Dramatic Edition`용 비공식 한국어 번역 패치입니다.
 게임 원본은 포함하지 않으며, 사용자가 정품에서 직접 만든 일본판 MDF에만 적용됩니다.
@@ -8,12 +8,12 @@
 Python 설치나 명령어 입력은 필요 없습니다.
 
 1. 받은 ZIP을 우클릭하고 **모두 압축 풀기**를 누릅니다.
-2. `랑그릿사_DE_한글패치_v0.13.21.exe`를 실행합니다.
+2. `랑그릿사_DE_한글패치_v1.0.exe`를 실행합니다.
 3. 일본판 원본 `.mdf`를 고른 뒤 **한글판 만들기**를 누릅니다.
 
 완료되면 결과 폴더가 자동으로 열립니다. 에뮬레이터에서 다음 파일 하나를 여세요.
 
-`Langrisser_Dramatic_Edition_Korean_v0.13.21.cue`
+`Langrisser_Dramatic_Edition_Korean_v1.0.cue`
 
 원본 MDF를 EXE 위로 끌어다 놓아도 됩니다. 원본 파일은 수정하지 않습니다.
 
@@ -37,7 +37,7 @@ Python 설치나 명령어 입력은 필요 없습니다.
 - **예전 글꼴이 보입니다.** 에뮬레이터를 완전히 종료하고 다시 실행한 뒤, 구형 세이브스테이트 대신 게임 내부 세이브를 불러오세요.
 - Windows가 알 수 없는 게시자 경고를 표시하면 GitHub 릴리스의 `SHA256SUMS.txt`와 EXE 해시가 같은지 먼저 확인하세요.
 
-## v0.13.21 주요 내용
+## v1.0 주요 내용
 
 ### 랑그릿사 I
 
@@ -59,18 +59,18 @@ Python 설치나 명령어 입력은 필요 없습니다.
 
 ## 고급 사용자용 수동 적용
 
-수동 적용용 LDP는 원클릭 ZIP에 포함되지 않으며, GitHub 릴리스의 별도 자산 `langrisser_de_ko_v0.13.21.ldp`로 제공됩니다. 저장소의 `apply_patch.py`, `make_cue_bin.py`와 이 LDP를 같은 폴더에 둔 뒤 Python 3.8 이상에서 실행합니다.
+수동 적용용 LDP는 원클릭 ZIP에 포함되지 않으며, GitHub 릴리스의 별도 자산 `langrisser_de_ko_v1.0.ldp`로 제공됩니다. 저장소의 `apply_patch.py`, `make_cue_bin.py`와 이 LDP를 같은 폴더에 둔 뒤 Python 3.8 이상에서 실행합니다.
 
 ```powershell
-python apply_patch.py "D:\경로\langDramaticEdition.mdf" "D:\경로\langDramaticEdition_ko_v0.13.21.mdf"
-python make_cue_bin.py "D:\경로\langDramaticEdition_ko_v0.13.21.mdf" "D:\경로\Langrisser_Dramatic_Edition_Korean_v0.13.21.bin"
+python apply_patch.py "D:\경로\langDramaticEdition.mdf" "D:\경로\langDramaticEdition_ko_v1.0.mdf"
+python make_cue_bin.py "D:\경로\langDramaticEdition_ko_v1.0.mdf" "D:\경로\Langrisser_Dramatic_Edition_Korean_v1.0.bin"
 ```
 
-두 번째 명령이 만드는 `Langrisser_Dramatic_Edition_Korean_v0.13.21.cue`가 권장 MODE2/XA CUE입니다. 일반 사용자는 이 수동 방법을 사용할 필요가 없습니다.
+두 번째 명령이 만드는 `Langrisser_Dramatic_Edition_Korean_v1.0.cue`가 권장 MODE2/XA CUE입니다. 일반 사용자는 이 수동 방법을 사용할 필요가 없습니다.
 
 ## 검증 범위와 중요 사항
 
-- v0.13.21의 공식 런타임 검수 환경은 `RetroArch 1.22.2 / Beetle Saturn` 코어이며, 런타임 확인 범위는 아래 용병 고용창 출력입니다. 검수한 v01321 QA MDF/BIN과 릴리스 목표 MDF/BIN은 바이트 단위로 같습니다.
+- v1.0의 공식 런타임 검수 환경은 `RetroArch 1.22.2 / Beetle Saturn` 코어이며, 런타임 확인 범위는 아래 용병 고용창 출력입니다. 검수한 v01321 QA MDF/BIN과 릴리스 목표 MDF/BIN은 바이트 단위로 같습니다.
 - 랑그릿사 II 용병 고용창의 16×16 `솔저` 출력을 최종 후보에서 사용자 검수했습니다.
 - **v0.13.17부터 공식 화면 검수는 RetroArch의 Beetle Saturn 코어에서만 수행합니다.** Ymir를 포함한 다른 세가 새턴 에뮬레이터와 실기는 공식 검증 대상이 아니며 호환성을 보장하지 않습니다.
 - 랑그릿사 I의 알려진 `아이템 장비 → 구입` 경로는 캡처했지만 모든 상점 분기나 게임 전체 완주를 검증한 것은 아닙니다.
